@@ -1,5 +1,6 @@
 package com.mysite.sbb.user;
 
+import com.mysite.sbb.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -36,5 +37,15 @@ public class UserSecurityService implements UserDetailsService {
         }
 
         return new User(siteUser.getUsername(), siteUser.getPassword(), authorities);
+    }
+
+    public SiteUser getSiteUser(String username) {
+        Optional<SiteUser> siteUser = this.userRepository.findByUsername(username);
+        if (siteUser.isEmpty()) {
+            return siteUser.get();
+        }
+        else {
+            throw new DataNotFoundException("siteuser not found.");
+        }
     }
 }
