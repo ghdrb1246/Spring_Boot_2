@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 public class Answer {
+    private LocalDateTime modifiedDate;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
