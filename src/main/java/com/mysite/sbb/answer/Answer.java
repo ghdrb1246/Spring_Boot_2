@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 public class Answer {
-    private LocalDateTime modifiedDate;
+    private LocalDateTime modifyDate;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

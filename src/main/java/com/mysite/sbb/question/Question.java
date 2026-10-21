@@ -11,8 +11,6 @@ import java.util.List;
 @Data
 @Entity
 public class Question {
-    private LocalDateTime modifiedDate;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -33,4 +31,6 @@ public class Question {
 
     @ManyToOne
     private SiteUser author;
+
+    private LocalDateTime modifyDate;
 }
