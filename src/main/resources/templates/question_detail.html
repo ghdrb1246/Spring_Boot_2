@@ -41,7 +41,7 @@
         <div class="card my-3" th:each="answer : ${question.answerList}">
             <a th:id="|answer_${answer.id}|"></a>
             <div class="card-body">
-                <div class="card-text" th:utext="${@commonUtil.markdown(question.content)}"></div>
+                <div class="card-text" th:utext="${@commonUtil.markdown(answer.content)}"></div>
                 <div class="d-flex justify-content-end">
                     <div th:if="${answer.modifyDate != null}" class="badge bg-light text-dark p-2 text-start mx-3">
                         <div class="mb-2">modified at</div>
@@ -73,7 +73,6 @@
         </div>
         <!-- 답변 반복 끝  -->
         <!-- 답변 작성 -->
-        <!--/*@thymesVar id="answerForm" type=""*/-->
         <form th:action="@{|/answer/create/${question.id}|}" th:object="${answerForm}" method="post" class="my-3">
             <div th:replace="~{form_errors :: formErrorsFragment}"></div>
             <textarea sec:authorize="isAnonymous()" disabled th:field="*{content}" class="form-control" rows="10"></textarea>
